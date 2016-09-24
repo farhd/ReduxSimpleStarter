@@ -1,15 +1,16 @@
 import React from 'react'
+import VideoListItem from './video-list-item'
 
 const VideoList = (props) => {
-    return (
-        <ul className="col-md-4 list-group">
-        {
-            props.videos.map( (item) => {
-                return <li key={item.id.videoId}>{item.snippet.title}</li>
-            })
-        }
-        </ul>
-    )
+  const videoItems = props.videos.map( (video, i) => {
+    return <VideoListItem key={i} video={video} />
+  })
+
+  return (
+    <ul className="col-md-4 list-group">
+    { videoItems }
+    </ul>
+  )
 }
 
 export default VideoList
