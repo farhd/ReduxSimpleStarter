@@ -1,3 +1,4 @@
+import debounce from 'debounce'
 import React, { Component } from 'react'
 
 class SearchBar extends Component {
@@ -13,11 +14,13 @@ class SearchBar extends Component {
     this.setState({
       term: e.target.value
     })
+    this.props.onTermChange(this.state.term)
   }
-
+  /*
   onKeyPress(e) {
     if (e.key === 'Enter') return this.props.onTermChange(this.state.term)
   }
+  */
 
   render() {
     return (
@@ -25,7 +28,6 @@ class SearchBar extends Component {
         <input
           value={this.state.term}
           onChange={e => this.onInputChange(e)}
-          onKeyPress={e => this.onKeyPress(e)}
         />
       </div>
     )
